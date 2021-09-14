@@ -15,7 +15,7 @@ class WeightController {
 
   async getAll(req, res) {
     try {
-      const weight = await db.query(`SELECT * FROM weight LIMIT 12`)
+      const weight = await db.query(`SELECT * FROM weight ORDER BY id DESC LIMIT 10`)
       res.status(200).json({ err: false, data: weight.rows })
     } catch (e) {
       res.status(500).json({ err: true, message: "Неизвестная ошибка сервера" })
