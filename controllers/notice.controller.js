@@ -15,14 +15,10 @@ class NoticeController {
 
   async get(req, res) {
     try {
-      const { date } = req.body
-      let notices
-      if (date)
-        notices = await db.query(
-          `SELECT * FROM notices WHERE date_add = '${date}'`
-        )
-      else notices = await db.query(`SELECT * FROM notices`)
-
+      const date = req.query.date
+      const notices = await db.query(
+        `SELECT * FROM notices WHERE date_add = '${date}'`
+      )
       res.status(200).json({ err: false, data: notices.rows })
     } catch (e) {
       res.status(500).json({ err: true, message: "Неизвестная ошибка сервера" })
