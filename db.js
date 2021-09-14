@@ -5,7 +5,7 @@ const db = new pg.Pool({
   password: "root",
   host: "localhost",
   port: 5432,
-  database: "baby",
+  database: "calories",
 })
 
 export default db
